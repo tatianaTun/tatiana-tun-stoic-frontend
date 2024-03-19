@@ -18,11 +18,12 @@ Users who enjoy reflective practices like journaling, meditation, and thoughtful
 
 ### Features
 
-As a user, I want to receive a random Stoic quote daily for inspiration and reflection.
-As a user, I want to input my current issues and receive personalized advice based on Stoic philosophy, including relevant quotes and detailed guidance.
-As a user, I want to choose specific Stoic exercises to practice daily, such as resilience, calm, discipline, acceptance etc to improve my mental well-being.
-As a user, I want to engage in interactive scenarios where I can make decisions based on Stoic principles and receive feedback to enhance my understanding and application of Stoicism.
-As a user, I want to participate in Stoic Challenges that encourage me to apply Stoic principles in my life for a certain period and track my progress.
+- As a user, I want to receive a random Stoic quote daily for inspiration and reflection.
+- As a user, I want to input my current issues and receive personalized advice based on Stoic philosophy, including relevant quotes and detailed guidance.
+- As a user, I want to choose specific Stoic exercises to practice daily, such as resilience, calm, discipline, acceptance etc to improve my mental well-being.
+- As a user, I want to engage in interactive scenarios where I can make decisions based on Stoic principles and receive feedback to enhance my understanding and application of Stoicism.
+- As a user, I want to participate in Stoic Challenges that encourage me to apply Stoic principles in my life for a certain period and track my progress.
+- As a user, I want to save my favorite quote and track my activities and progress.
 
 ## Implementation
 
@@ -46,17 +47,16 @@ Client libraries:
 
 External API for random quotes - https://github.com/tlcheah2/stoic-quote-lambda-public-api
 External openAI API for advice and interactive scenarios
-
 Internal API to manage user accounts, stoic exercises and challenges, user inputs, responses.
 Potential future integration with mindfulness and meditation content providers.
 
 ### Sitemap
 
-Home Page (Daily Quote, User Input for Advice)
-Daily Stoic Exercises Selection
-Interactive Scenarios
-Stoic Challenges
-Profile/Account Management
+- Home Page (Daily Quote, User Input for Advice)
+- Daily Stoic Exercises Selection
+- Exercise Page with Interactive Scenarios
+- Stoic Challenges
+- Profile/Account Management
 
 ### Mockups
 
@@ -149,6 +149,17 @@ Personal information:
 
 ## Roadmap
 
+**Roadmap Overview**
+
+- Initial development of the app with React, including basic UI and navigation.
+- Setup of the backend server with Node.js and Express, including API endpoints for quotes, advice, exercises, scenarios, and challenges.
+- Integration of local file for storing user data, quotes, and exercises.
+- Implementation of user authentication and profile management.
+- Development of the Daily Stoic Exercises, Interactive Scenarios, and Stoic Challenges features.
+- Testing and refining the app based on user feedback.
+
+**Roadmap Breakdown**
+
 - Create client
     - react project with routes and boilerplate pages
 
@@ -207,19 +218,12 @@ Optional:
 - Bug fixes
 
 - DEMO DAY
-## Roadmap
 
-Initial development of the app with React, including basic UI and navigation.
-Setup of the backend server with Node.js and Express, including API endpoints for quotes, advice, exercises, scenarios, and challenges.
-Integration of local file for storing user data, quotes, and exercises.
-Implementation of user authentication and profile management.
-Development of the Daily Stoic Exercises, Interactive Scenarios, and Stoic Challenges features.
-Testing and refining the app based on user feedback.
 
 ## Nice-to-haves
 
-Integration with wearable devices to remind users of daily exercises and track stress levels.
-Social sharing features to share quotes, progress in challenges, and personal reflections.
-Gamification elements to motivate users to consistently engage with the app (badges, streaks).
-Personalized insights and progress reports to show users how their well-being has improved over time.
-Community features to connect users with similar interests or challenges.
+- Integration with wearable devices to remind users of daily exercises and track stress levels.
+- Social sharing features to share quotes, progress in challenges, and personal reflections.
+- Gamification elements to motivate users to consistently engage with the app (badges, streaks).
+- Personalized insights and progress reports to show users how their well-being has improved over time.
+- Community features to connect users with similar interests or challenges.
