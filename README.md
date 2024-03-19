@@ -29,19 +29,18 @@ Users who enjoy reflective practices like journaling, meditation, and thoughtful
 
 ### Tech Stack
 
-React (Later React Native for cross-platform mobile app development).
-Node.js and Express for the backend server.
-MySQL
-Express
-Client libraries:
-
-- react
-- react-router
-- axios
-  Server libraries:
-- knex
-- express
-- bcrypt for password hashing
+- React (Later React Native for cross-platform mobile app development).
+- Node.js and Express for the backend server.
+- MySQL
+- Express
+- Client libraries:
+    - react
+    - react-router
+    - axios
+- Server libraries:
+    - knex
+    - express
+    - bcrypt for password hashing
 
 ### APIs
 
