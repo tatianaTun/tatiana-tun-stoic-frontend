@@ -59,15 +59,17 @@ Potential future integration with mindfulness and meditation content providers.
 
 ### Mockups
 
-Home Page with Daily Quote
+#### Home Page with Daily Quote and Personalized Advice Input Component
+![](main-page.png)
 
-Personalized Advice Input Component
+#### Daily Stoic Exercises Selection Page
+![](exercises-page.png)
 
-Daily Stoic Exercises Selection Page
+#### Exercise Page with Interactive Scenarios
+![](exercise-page.png)
 
-Interactive Scenarios Page
-
-Stoic Challenges Page
+#### Stoic Challenges Page
+![](challenges-page.png)
 
 ### Data
 
@@ -226,3 +228,4 @@ Optional:
 - Gamification elements to motivate users to consistently engage with the app (badges, streaks).
 - Personalized insights and progress reports to show users how their well-being has improved over time.
 - Community features to connect users with similar interests or challenges.
+- diary for recording thoughts and experience.
