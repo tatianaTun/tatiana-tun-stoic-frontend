@@ -228,4 +228,4 @@ Optional:
 - Gamification elements to motivate users to consistently engage with the app (badges, streaks).
 - Personalized insights and progress reports to show users how their well-being has improved over time.
 - Community features to connect users with similar interests or challenges.
-- diary for recording thoughts and experience.
+- Diary for recording thoughts and experience.
