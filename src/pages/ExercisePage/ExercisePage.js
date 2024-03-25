@@ -1,13 +1,35 @@
 import OpenAI from "openai";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { baseURL } from "../../consts";
+import axios from "axios";
 
 function ExercisePage() {
+  const { exerciseId } = useParams();
+
   //Int scenario
-  const [exercise, setExercise] = useState("Early morning reflection");
-  const [prompt, setPrompt] = useState("");
+  const [exercise, setExercise] = useState(null);
   const [scenario, setScenario] = useState(null);
   const [scenarioAnswer, setScenarioAnswer] = useState(null);
   const [scenarioFeedback, setScenarioFeedback] = useState(null);
+
+console.log(exerciseId)
+
+  //get
+  const getExercise = async () => {
+    try {
+      const requestUrl = `${baseURL}/exercises/${exerciseId}`;
+      console.log(requestUrl)
+      const result = await axios.get(requestUrl);
+      const fetchedExercise = result.data;
+      console.log(fetchedExercise)
+      if (!exercise) {
+        setExercise(fetchedExercise);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   //get int scenario and get feedback
 
@@ -15,19 +37,15 @@ function ExercisePage() {
     e.preventDefault();
 
     const openai = new OpenAI({
-      apiKey: "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", //process.env.REACT_APP_OPENAI_API_KEY
+      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
       dangerouslyAllowBrowser: true,
     });
-
-    setPrompt(
-      `My exercise is ${exercise}.Please give me an interactive scenario where I can apply apply the exercise without specifying how the exercise should be apllied. Add a short question about how the exercise the person just practiced can be applied in this scenario without hinting on it's positive effects`
-    );
 
     const chatCompletion = await openai.chat.completions.create({
       messages: [
         {
           role: "user",
-          content: prompt,
+          content: `The exercise is ${exercise}.Please give back an interactive scenario where a person can apply the exercise without specifying how the exercise should be apllied. Add a short question about how the exercise the person just practiced can be applied in this scenario without hinting on it's positive effects. Please write as you are communication with a person. Specify the scenario is to practice this exercise.`,
         },
       ],
       model: "gpt-3.5-turbo",
@@ -50,7 +68,7 @@ function ExercisePage() {
       messages: [
         {
           role: "user",
-          content: `The scenario is ${prompt}. The usr's answer is ${scenarioAnswer}. Please analize the answer and return feedback`,
+          content: `The scenario is ${scenario}. The user's answer is ${scenarioAnswer}. Please analize the answer and return feedback as you are communicating in person. Keep in mind that this is all related to Stoicism philosophy. Reply without questions as the user will not be able to reply you.`,
         },
       ],
       model: "gpt-3.5-turbo",
@@ -61,9 +79,24 @@ function ExercisePage() {
     setScenarioFeedback(returnedScenarioFeedback);
   };
 
+  useEffect(() => {
+    getExercise();
+  }, [scenario]);
+
+  if(!exercise){
+    return <p>Loading...</p>
+  }
+
   return (
     <>
-      {" "}
+      <section>
+        <h1>{exercise.name}</h1>
+        <p>{exercise.description}</p>
+        <h4>Benefits</h4>
+        <p>{exercise.benefits}</p>
+        <h4>Instructions</h4>
+        <p>{exercise.instructions}</p>
+      </section>
       <section>
         <div>
           <h2>Interactive Scenario</h2>
@@ -76,7 +109,7 @@ function ExercisePage() {
               type="text"
               onChange={(e) => setScenarioAnswer(e.target.value)}
             ></input>
-            <button type="submit">ask</button>
+            <button type="submit">get feedback</button>
           </form>
           <h3>Feedback</h3>
           <p>{scenarioFeedback}</p>
