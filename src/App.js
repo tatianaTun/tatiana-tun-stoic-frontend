@@ -3,11 +3,13 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import MainPage from "./pages/MainPage/MainPage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
+import Header from "./components/Header/Header";
 
 function App() {
 
   return (
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* <Route path="/exercises/" element={<ExercisesPage />} /> */}
