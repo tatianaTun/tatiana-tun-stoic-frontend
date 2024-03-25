@@ -1,0 +1,13 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background-color:rgb(214, 214, 251);
+    &__links{
+
+    }
+    &__link{
+        padding:0 10px;
+        text-decoration:none;
+    }
+}
