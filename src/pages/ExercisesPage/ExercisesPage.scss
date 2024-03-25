@@ -1,0 +1,25 @@
+.exercises{
+
+    &__exercise-card{
+        display:flex;
+        justify-content: space-between;
+        width:80%;
+        background-color:rgb(255, 250, 218);
+        padding-left: 40px;
+        border-radius:50px;
+        margin:20px 0;
+    }
+    &__exercise-name{
+        margin:0;
+        padding:10px;
+    }
+    &__exercise-link{
+        display:block;
+        padding:10px;
+        text-decoration:none;
+        font-weight:bold;
+        background-color:rgba(51, 63, 196, 0.973);
+        color:white;
+        border-radius:50px;
+    }
+}
