@@ -40,7 +40,8 @@ function ChallengesPage() {
         <h2>Challenges List</h2>
         {challenges.map((challenge) => (
           <article  key={challenge.id} className="challenges__challenge-card">
-            <h3 className="challenges__challenge-name">{challenge.name}</h3>
+            <h4 className="challenges__challenge-name">{challenge.name}</h4>
+            <h4>{challenge.length}/{challenge.length}</h4>
             <Link
               to={`/challenges/${challenges.id}`}
               className="challenges__challenge-link"

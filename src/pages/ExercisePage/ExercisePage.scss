@@ -1,0 +1,15 @@
+@forward "../../styles/partials/globals";
+@use "../../styles/partials/colors" as *;
+
+.exercise{
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    &__scenario{
+        background-color:$color-primary-light;
+        padding:20px 50px;
+        border-radius:40px;
+    }
+}

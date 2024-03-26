@@ -1,3 +1,4 @@
+import "./ExercisePage.scss";
 import OpenAI from "openai";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -9,26 +10,32 @@ function ExercisePage() {
 
   //Int scenario
   const [exercise, setExercise] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [scenario, setScenario] = useState(null);
   const [scenarioAnswer, setScenarioAnswer] = useState(null);
   const [scenarioFeedback, setScenarioFeedback] = useState(null);
 
-console.log(exerciseId)
+  console.log(exerciseId);
 
   //get
   const getExercise = async () => {
     try {
       const requestUrl = `${baseURL}/exercises/${exerciseId}`;
-      console.log(requestUrl)
+      console.log(requestUrl);
       const result = await axios.get(requestUrl);
       const fetchedExercise = result.data;
-      console.log(fetchedExercise)
+      console.log(fetchedExercise);
       if (!exercise) {
         setExercise(fetchedExercise);
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Function to toggle visibility
+  const showScenario = async () => {
+    setIsVisible(!isVisible);
   };
 
   //get int scenario and get feedback
@@ -83,27 +90,33 @@ console.log(exerciseId)
     getExercise();
   }, [scenario]);
 
-  if(!exercise){
-    return <p>Loading...</p>
+  if (!exercise) {
+    return <p>Loading...</p>;
   }
 
   return (
-    <>
-      <section>
+    <div className="exercise">
+      <section className="exercise__details">
         <h1>{exercise.name}</h1>
         <p>{exercise.description}</p>
-        <h4>Benefits</h4>
+        <h3>Benefits</h3>
         <p>{exercise.benefits}</p>
-        <h4>Instructions</h4>
+        <h3>Instructions</h3>
         <p>{exercise.instructions}</p>
+        <p>
+          Once you are done with the exercise, click the button below and you
+          will be able to try implementing the exercise in a real-life{" "}
+          <strong>interactive scenario</strong>!
+        </p>
+        <button onClick={showScenario}>DONE</button>
       </section>
-      <section>
-        <div>
-          <h2>Interactive Scenario</h2>
+      {isVisible && (
+        <section className="exercise__scenario">
+          <p>Now that you have practiced the exercise, you might have a better understanding of it's benefits.</p>
           <button type="click" onClick={getScenario}>
             GET SCENARIO
           </button>
-          <h3>{scenario}</h3>
+          <p>{scenario}</p>
           <form onSubmit={getScenarioFeedback}>
             <input
               type="text"
@@ -113,9 +126,9 @@ console.log(exerciseId)
           </form>
           <h3>Feedback</h3>
           <p>{scenarioFeedback}</p>
-        </div>
-      </section>
-    </>
+        </section>
+      )}
+    </div>
   );
 }
 

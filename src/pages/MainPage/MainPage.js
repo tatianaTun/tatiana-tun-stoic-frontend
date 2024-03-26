@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./MainPage.scss";
 
 function MainPage() {
   const [randomQuote, setRandomQuote] = useState("");
@@ -32,7 +33,7 @@ function MainPage() {
         messages: [
           {
             role: "user",
-            content: `${question}.Please reply me with an array. The first array item is a relevant quote from stoic philosophy that would be a good fit answer to my situation or question. Second array item should be the quote's author. The third item is explanation of the quote and it's application to the my situation or question. Please provide some mental support.`,
+            content: `This is my question ${question}. Please return your answer as an array. The first array item is a relevant quote from stoic philosophy that would be a good fit answer to my situation or question and should be returned inside additional quote marks. Second array item should be the quote's author starting with "- ". The third item is explanation of the quote and it's application to the my situation or question. Please provide some mental support.`,
           },
         ],
         model: "gpt-3.5-turbo",
@@ -57,23 +58,26 @@ function MainPage() {
   }
 
   return (
-    <div className="App">
-      <section>
-        <h2>"{randomQuote.quote}"</h2>
-        <p>-{randomQuote.author}</p>
+    <div className="main">
+      <section className="main__random-quote">
+        <h2>Quote of the Day</h2>
+        <p>"{randomQuote.quote}"</p>
+        <p>- {randomQuote.author}</p>
       </section>
-      <section>
+      <section className="main__advice">
         <form onSubmit={getAdvice}>
+          <h2 className="main__advice-header">NEED ADVICE?</h2>
           <input
             type="text"
             onChange={(e) => setQuestion(e.target.value)}
           ></input>
           <button type="submit">ask</button>
         </form>
-        <div>
-          <h2>Answer</h2>
-          <h3>"{advice[0]}"</h3>
-          <p>-{advice[1]}</p>
+        <div className="main__answer">
+          <div className="main__answer-quote">
+            <h3>{advice[0]}</h3>
+            <p>{advice[1]}</p>
+          </div>
           <p>{advice[2]}</p>
         </div>
       </section>

@@ -1,10 +1,21 @@
+@forward "../../styles/partials/globals";
+@use "../../styles/partials/colors" as *;
+
 .exercises{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    &__container {
+        width:80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     &__exercise-card{
         display:flex;
         justify-content: space-between;
-        width:80%;
-        background-color:rgb(255, 250, 218);
+        background-color:$color-secondary-light;
         padding-left: 40px;
         border-radius:50px;
         margin:20px 0;
@@ -15,11 +26,13 @@
     }
     &__exercise-link{
         display:block;
-        padding:10px;
+        padding:0 30px;
         text-decoration:none;
         font-weight:bold;
-        background-color:rgba(51, 63, 196, 0.973);
+        background-color:$button-start;
         color:white;
         border-radius:50px;
+        line-height: 55px;
     }
+
 }
