@@ -3,7 +3,7 @@ import { baseURL } from "../../consts";
 import { useState, useEffect } from "react";
 
 function LoginPage() {
-    const [isSignedUp, setIsSignedUp] = useState(false);
+    // const [isSignedUp, setIsSignedUp] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoginError, setIsLoginError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
