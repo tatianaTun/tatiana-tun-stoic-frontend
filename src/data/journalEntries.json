@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Morning Reflections",
+    "content": "Woke up early today feeling refreshed and ready to tackle my tasks...",
+    "date": "2024-03-01"
+  },
+  {
+    "id": 2,
+    "title": "Learning React",
+    "content": "React's component-based architecture is quite fascinating. I'm getting the hang of hooks...",
+    "date": "2024-03-02"
+  },
+  {
+    "id": 3,
+    "title": "A Walk in the Park",
+    "content": "Decided to take a midday walk in the park. It's amazing how nature can rejuvenate the mind...",
+    "date": "2024-03-03"
+  },
+  {
+    "id": 4,
+    "title": "Book Club Insights",
+    "content": "Our book club discussion today was thought-provoking. We dove deep into the themes of the book...",
+    "date": "2024-03-04"
+  },
+  {
+    "id": 5,
+    "title": "Meditation and Mindfulness",
+    "content": "Started a new meditation routine. It's challenging to quiet the mind, but I'm seeing small improvements...",
+    "date": "2024-03-05"
+  },
+  {
+    "id": 6,
+    "title": "Exploring New Hobbies",
+    "content": "Took up pottery as a new hobby. There's something incredibly soothing about molding clay with your own hands...",
+    "date": "2024-03-06"
+  },
+  {
+    "id": 7,
+    "title": "Gratitude Journaling",
+    "content": "Started gratitude journaling today. Focusing on the positive aspects of my life has lifted my spirits...",
+    "date": "2024-03-07"
+  },
+  {
+    "id": 8,
+    "title": "Family Game Night",
+    "content": "Had a family game night. It was filled with laughter and joy, a much-needed break from the routine...",
+    "date": "2024-03-08"
+  },
+  {
+    "id": 9,
+    "title": "Photography as a Form of Expression",
+    "content": "Experimented with photography today. Capturing moments through the lens offers a unique perspective on the world...",
+    "date": "2024-03-09"
+  },
+  {
+    "id": 10,
+    "title": "The Joy of Cooking",
+    "content": "Cooked a new recipe today. There's a certain type of joy in creating something delicious from scratch...",
+    "date": "2024-03-10"
+  },
+  {
+    "id": 11,
+    "title": "Overcoming Challenges",
+    "content": "Faced a significant challenge at work today. Working through it taught me resilience and perseverance...",
+    "date": "2024-03-11"
+  },
+  {
+    "id": 12,
+    "title": "Appreciating Art",
+    "content": "Visited an art gallery and was mesmerized by the artworks. Art truly has the power to move people...",
+    "date": "2024-03-12"
+  },
+  {
+    "id": 13,
+    "title": "The Importance of Friendship",
+    "content": "Caught up with an old friend. Reminded me of the importance of maintaining connections...",
+    "date": "2024-03-13"
+  },
+  {
+    "id": 14,
+    "title": "Fitness Goals",
+    "content": "Hit a new personal best in my fitness routine. Setting small, achievable goals has been key to my progress...",
+    "date": "2024-03-14"
+  },
+  {
+    "id": 15,
+    "title": "The Beauty of Sunrise",
+    "content": "Witnessed a breathtaking sunrise. It's moments like these that remind me to appreciate the simple things in life...",
+    "date": "2024-03-15"
+  },
+  {
+    "id": 16,
+    "title": "Exploring the City",
+    "content": "Spent the day exploring hidden gems in the city. It's amazing what you can discover when you look closely...",
+    "date": "2024-03-16"
+  }
+]

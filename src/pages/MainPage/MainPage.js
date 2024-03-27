@@ -67,11 +67,15 @@ function MainPage() {
       <section className="main__advice">
         <form onSubmit={getAdvice}>
           <h2 className="main__advice-header">NEED ADVICE?</h2>
-          <input
-            type="text"
-            onChange={(e) => setQuestion(e.target.value)}
-          ></input>
-          <button type="submit">ask</button>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => setQuestion(e.target.value)}
+            ></input>
+            <button type="submit" className="main__button">
+              ask
+            </button>
+          </div>
         </form>
         <div className="main__answer">
           <div className="main__answer-quote">

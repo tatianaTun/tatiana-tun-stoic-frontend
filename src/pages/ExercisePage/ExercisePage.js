@@ -103,18 +103,18 @@ function ExercisePage() {
         <p>{exercise.benefits}</p>
         <h3>Instructions</h3>
         <p>{exercise.instructions}</p>
-        <p>
+        <p className="exercise__next-steps">
           Once you are done with the exercise, click the button below and you
           will be able to try implementing the exercise in a real-life{" "}
           <strong>interactive scenario</strong>!
         </p>
-        <button onClick={showScenario}>DONE</button>
+        <button  className="exercise__done-button" onClick={showScenario}>DONE</button>
       </section>
       {isVisible && (
         <section className="exercise__scenario">
           <p>Now that you have practiced the exercise, you might have a better understanding of it's benefits.</p>
-          <button type="click" onClick={getScenario}>
-            GET SCENARIO
+          <button type="click" className="exercise__scenario-button" onClick={getScenario}>
+           <strong></strong> GET SCENARIO
           </button>
           <p>{scenario}</p>
           <form onSubmit={getScenarioFeedback}>
@@ -122,10 +122,10 @@ function ExercisePage() {
               type="text"
               onChange={(e) => setScenarioAnswer(e.target.value)}
             ></input>
-            <button type="submit">get feedback</button>
+            <button type="submit" className="exercise__feedback-button">SHARE</button>
           </form>
-          <h3>Feedback</h3>
-          <p>{scenarioFeedback}</p>
+          {/* <h3>Feedback</h3> */}
+          <p className="exercise__feedback">{scenarioFeedback}</p>
         </section>
       )}
     </div>

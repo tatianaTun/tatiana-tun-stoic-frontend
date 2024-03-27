@@ -1,15 +1,39 @@
 @forward "../../styles/partials/globals";
 @use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
 
-.exercise{
-    width:70%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.exercise {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 
-    &__scenario{
-        background-color:$color-primary-light;
-        padding:20px 50px;
-        border-radius:40px;
-    }
+  &__next-steps {
+    margin-top:100px;
+  }
+  &__scenario {
+    background-color: $color-primary-light;
+    padding: 50px 50px;
+    border-radius: 40px;
+    margin-top:50px;
+  }
+  &__done-button,
+  &__feedback-button {
+    border: none;
+    border-radius: 30px;
+    padding: 20px 40px;
+    background-color: $color-secondary-medium;
+    color:$color-primary-dark;
+    font-weight:bold;
+  }
+  &__scenario-button{
+    border:none;
+    background-color: $color-primary-light;
+    font-weight:bold;
+    margin:30px 0;
+  }
+
+  &__feedback{
+    margin:70px 0;
+  }
 }

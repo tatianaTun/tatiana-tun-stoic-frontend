@@ -1,0 +1,42 @@
+@use "../../styles/partials/colors" as *;
+
+.profile {
+  display: flex;
+
+  &__sidebar {
+    width: 30%;
+    height: 100vh;
+    background-color: $color-primary-light;
+  }
+
+  & button {
+    border: none;
+    background-color: $color-primary-light;
+    &:hover {
+      background-color: $color-secondary-background; 
+    }
+  }
+
+  & ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    & li {
+      display:flex;
+      &:hover {
+        background-color: $color-secondary-background; 
+      }
+    }
+  }
+  &__entry-button{
+    padding:5px 0;
+  }
+
+
+
+  &__journal-output {
+    background-color: $color-secondary-light;
+    flex:1;
+    padding:0 3rem;
+  }
+}

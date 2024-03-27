@@ -19,18 +19,14 @@
 
     & form {
       & input {
-        width: 60%;
-        height: 2rem;
-        border: 1px solid grey;
-        border-radius: 10px;
-        padding-left:10px;
+        
       }
       & button {
         width:80px;
         height: 2rem;
-        margin-left:10px;
+
         border:none;
-        border-radius: 10px;
+        border-radius: 50px;
         // background-color:$button;
       }
     }

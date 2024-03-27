@@ -18,7 +18,7 @@ function App() {
   const signupUrl = `${baseURL}/auth/signup`;
   const loginUrl = `${baseURL}/auth/login`;
 
-  const [isSignedUp, setIsSignedUp] = useState(false); 
+  const [isSignedUp, setIsSignedUp] = useState(true); 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginError, setIsLoginError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
