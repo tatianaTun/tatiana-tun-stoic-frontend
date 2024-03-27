@@ -1,0 +1,13 @@
+@use "../../styles/partials/colors" as *;
+
+.profile {
+    &__header-container {
+        display:flex;
+        justify-content:space-between;
+    }
+  &__logout-button {
+    border: none;
+    background-color: $color-secondary-light;
+    margin:28px 0;
+  }
+}

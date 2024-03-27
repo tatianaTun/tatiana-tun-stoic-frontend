@@ -9,7 +9,8 @@
     background-color: $color-primary-light;
   }
 
-  & button {
+  &__add-button,
+  &__entry-button {
     border: none;
     background-color: $color-primary-light;
     &:hover {
