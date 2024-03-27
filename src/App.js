@@ -6,6 +6,7 @@ import "./App.css";
 import MainPage from "./pages/MainPage/MainPage";
 import ExercisePage from "./pages/ExercisePage/ExercisePage";
 import ExercisesPage from "./pages/ExercisesPage/ExercisesPage";
+import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengesPage from "./pages/ChallengesPage/ChallengesPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Header from "./components/Header/Header";
@@ -112,8 +113,9 @@ function App() {
         {/* <Route path="/login" element={<LoginPage />} /> */}
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/exercises" element={<ExercisesPage />} />
-        <Route path="/challenges" element={<ChallengesPage />} />
         <Route path="/exercises/:exerciseId" element={<ExercisePage />} />
+        <Route path="/challenges" element={<ChallengesPage />} />
+        <Route path="/challenges/:challengeId" element={<ChallengePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -43,7 +43,7 @@ function ChallengesPage() {
             <h4 className="challenges__challenge-name">{challenge.name}</h4>
             <h4>{challenge.length}/{challenge.length}</h4>
             <Link
-              to={`/challenges/${challenges.id}`}
+              to={`/challenges/${challenge.id}`}
               className="challenges__challenge-link"
             >
               START

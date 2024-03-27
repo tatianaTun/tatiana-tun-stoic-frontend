@@ -8,14 +8,11 @@ import axios from "axios";
 function ExercisePage() {
   const { exerciseId } = useParams();
 
-  //Int scenario
   const [exercise, setExercise] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [scenario, setScenario] = useState(null);
   const [scenarioAnswer, setScenarioAnswer] = useState(null);
   const [scenarioFeedback, setScenarioFeedback] = useState(null);
-
-  console.log(exerciseId);
 
   //get
   const getExercise = async () => {
