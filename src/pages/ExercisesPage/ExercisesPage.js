@@ -25,7 +25,6 @@ function ExercisesPage() {
           : `${baseURL}/exercises?tag=${tag}`;
       const result = await axios.get(requestUrl);
       const fetchedExercises = result.data;
-      console.log(fetchedExercises);
       setExercises(fetchedExercises);
     } catch (error) {
       console.log(error);

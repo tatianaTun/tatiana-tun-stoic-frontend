@@ -27,7 +27,7 @@ function ProfileInfo({userInfo, level}) {
         >
           Log out
         </button></div>
-        <p>{level}</p>
+        <p className="profile__level">{level}</p>
         <p>Accomplishments: ___</p>
       </div>
     </>

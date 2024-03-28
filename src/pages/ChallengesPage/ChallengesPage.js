@@ -12,11 +12,7 @@ function ChallengesPage() {
       const requestUrl = `${baseURL}/challenges`;
       const result = await axios.get(requestUrl);
       const fetchedChallenges = result.data;
-      console.log(fetchedChallenges);
       setChallenges(fetchedChallenges);
-      //   if (!exercises) {
-      //     setExercises(fetchedExercises);
-      //   }
     } catch (error) {
       console.log(error);
     }
@@ -41,12 +37,12 @@ function ChallengesPage() {
         {challenges.map((challenge) => (
           <article  key={challenge.id} className="challenges__challenge-card">
             <h4 className="challenges__challenge-name">{challenge.name}</h4>
-            <h4>{challenge.length}/{challenge.length}</h4>
+            <h4>0/{challenge.length}</h4>
             <Link
               to={`/challenges/${challenge.id}`}
               className="challenges__challenge-link"
             >
-              START
+              DO
             </Link>
           </article>
         ))}

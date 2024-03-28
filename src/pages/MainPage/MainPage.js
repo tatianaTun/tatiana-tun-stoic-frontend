@@ -13,7 +13,6 @@ function MainPage() {
   const getRandomQuote = async () => {
     try {
       const response = await axios.get("https://stoic.tekloon.net/stoic-quote");
-      console.log(response);
       setRandomQuote(response.data);
     } catch (error) {}
     // console.log(randomQuote);

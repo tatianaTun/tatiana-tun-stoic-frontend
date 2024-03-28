@@ -18,10 +18,8 @@ function ExercisePage() {
   const getExercise = async () => {
     try {
       const requestUrl = `${baseURL}/exercises/${exerciseId}`;
-      console.log(requestUrl);
       const result = await axios.get(requestUrl);
       const fetchedExercise = result.data;
-      console.log(fetchedExercise);
       if (!exercise) {
         setExercise(fetchedExercise);
       }

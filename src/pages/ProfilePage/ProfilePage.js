@@ -4,6 +4,7 @@ import { baseURL } from "../../consts";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.scss";
 import journalEntries from "../../data/journalEntries.json";
+// import { plusIcon } from '../../../public/plus.svg';
 
 import AddEntry from "../../components/AddEntry/AddEntry";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
@@ -15,7 +16,7 @@ function ProfilePage() {
   const [addEntry, setAddEntry] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  
+
   const points = 22;
   const levels = [
     "Level 1 : Novice Navigator",
@@ -35,7 +36,6 @@ function ProfilePage() {
     try {
       // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
       const token = sessionStorage.token;
-      console.log(token);
       const response = await axios.get(profileUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -94,14 +94,15 @@ function ProfilePage() {
         <div className="profile__journal">
           <h3>Journal</h3>
           <button className="profile__add-button" onClick={addEntryHandler}>
-            add
+            {/* <plusIcon /> */}
+            Add
           </button>
           <div>
             <h4>All entries</h4>
             <ul>
               {entries.map((entry) => (
                 <li key={entry.id}>
-                  <p>{entry.date}</p>
+                  {/* <p>{entry.date}</p> */}
                   <button
                     className="profile__entry-button"
                     onClick={() => openEntryHandler(entry)}
