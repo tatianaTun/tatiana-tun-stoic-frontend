@@ -12,6 +12,14 @@
         margin-right: auto;
     }
 
+    &__tags {
+display:block;
+border-radius:30px;
+padding:1rem;
+border:2px solid $color-placeholder;
+font-size:1rem;
+    }
+
     &__exercise-card{
         display:flex;
         justify-content: space-between;
