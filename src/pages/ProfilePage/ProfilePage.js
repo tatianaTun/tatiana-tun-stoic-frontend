@@ -11,11 +11,13 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 const profileUrl = `${baseURL}/profile`;
 
 function ProfilePage() {
+  const navigate = useNavigate();
   const [entries, setEntries] = useState([]);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [addEntry, setAddEntry] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const points = 22;
   const levels = [
@@ -50,28 +52,32 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    fetchData();
-    setEntries(journalEntries);
-    if (0 < points && points < 5) {
-      setLevel(levels[0]);
-    } else if (4 < points && points < 10) {
-      setLevel(levels[1]);
-    } else if (9 < points && points < 15) {
-      setLevel(levels[2]);
-    } else if (14 < points && points < 20) {
-      setLevel(levels[3]);
-    } else if (19 < points && points < 25) {
-      setLevel(levels[4]);
-    } else if (24 < points && points < 30) {
-      setLevel(levels[5]);
-    } else if (29 < points && points < 35) {
-      setLevel(levels[6]);
-    } else if (34 < points && points < 40) {
-      setLevel(levels[7]);
-    } else if (39 < points && points < 45) {
-      setLevel(levels[8]);
-    } else if (44 < points) {
-      setLevel(levels[9]);
+    if (!sessionStorage.token) {
+      navigate("/signup");
+    } else {
+      fetchData();
+      setEntries(journalEntries);
+      if (0 < points && points < 5) {
+        setLevel(levels[0]);
+      } else if (4 < points && points < 10) {
+        setLevel(levels[1]);
+      } else if (9 < points && points < 15) {
+        setLevel(levels[2]);
+      } else if (14 < points && points < 20) {
+        setLevel(levels[3]);
+      } else if (19 < points && points < 25) {
+        setLevel(levels[4]);
+      } else if (24 < points && points < 30) {
+        setLevel(levels[5]);
+      } else if (29 < points && points < 35) {
+        setLevel(levels[6]);
+      } else if (34 < points && points < 40) {
+        setLevel(levels[7]);
+      } else if (39 < points && points < 45) {
+        setLevel(levels[8]);
+      } else if (44 < points) {
+        setLevel(levels[9]);
+      }
     }
   }, []);
 

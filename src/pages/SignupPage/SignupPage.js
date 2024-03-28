@@ -1,44 +1,54 @@
 import axios from "axios";
 import { baseURL } from "../../consts";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/Input/Input";
 
 function SignupPage() {
-    const [isSignedUp, setIsSignedUp] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isLoginError, setIsLoginError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const signupUrl = `${baseURL}/signup`;
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
-    const handleSignup = async (e) => {
-        e.preventDefault();
-    
-        // Here send a POST request to signupUrl with username, name and password data
-        try {
-          const response = await axios.post(signupUrl, {
-            username: e.target.username.value,
-            name: e.target.name.value,
-            password: e.target.password.value,
-          });
-          console.log(response);
-          setIsSignedUp(true);
-        } catch (error) {}
-      };
-  return <>    <div>
-  <h1>Sign Up</h1>
-  <form onSubmit={handleSignup}>
-    <div className="form-group">
-      Username: <input type="text" name="username" />
-    </div>
-    <div className="form-group">
-      Name: <input type="text" name="name" />
-    </div>
-    <div className="form-group">
-      Password: <input type="password" name="password" />
-    </div>
-    <button type="submit" className="btn btn-primary">
-      Signup
-    </button>
-  </form>
-</div></>;
+  const navigate = useNavigate();
+
+  const handleSignup = async (event) => {
+    event.preventDefault();
+
+    // Here send a POST request to signupUrl with username, name and password data
+    try {
+      const signupUrl = `${baseURL}/auth/signup`;
+      await axios.post(signupUrl, {
+        username: event.target.username.value,
+        name: event.target.name.value,
+        password: event.target.password.value,
+      });
+      setSuccess(true);
+      setError(null);
+      event.target.reset();
+    } catch (error) {
+      setSuccess(false);
+      setError(error.response.data);
+    }
+  };
+  return (
+    <>
+      {" "}
+      <div>
+        <form onSubmit={handleSignup}>
+          <h1>Sign Up</h1>
+          <Input type="text" name="username" label="Username" />
+          <Input type="text" name="name" label="Name" />
+          <Input type="password" name="password" label="Password" />
+          
+          <button type="submit" className="btn btn-primary">Signup</button>
+
+          {success && <div className="signup__message">Signed up!</div>}
+          {error && <div className="signup__message">{error}</div>}
+        </form>
+        <p>
+          Have an account? <Link to="/login">Log in</Link>
+        </p>
+      </div>
+    </>
+  );
 }
 export default SignupPage;
