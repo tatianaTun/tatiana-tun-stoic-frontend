@@ -24,6 +24,7 @@ function SignupPage() {
       setSuccess(true);
       setError(null);
       event.target.reset();
+      navigate("/login");
     } catch (error) {
       setSuccess(false);
       setError(error.response.data);

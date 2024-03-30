@@ -3,21 +3,13 @@ import axios from "axios";
 import { baseURL } from "../../consts";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.scss";
-import journalEntries from "../../data/journalEntries.json";
-// import { plusIcon } from '../../../public/plus.svg';
-
-import AddEntry from "../../components/AddEntry/AddEntry";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 const profileUrl = `${baseURL}/profile`;
 
 function ProfilePage() {
   const navigate = useNavigate();
-  const [entries, setEntries] = useState([]);
-  const [selectedEntry, setSelectedEntry] = useState(null);
-  const [addEntry, setAddEntry] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const points = 22;
   const levels = [
@@ -48,6 +40,7 @@ function ProfilePage() {
       // Remember to include the token in Authorization header
     } catch (error) {
       console.log(error);
+      navigate("/login");
     }
   };
 
@@ -56,7 +49,6 @@ function ProfilePage() {
       navigate("/signup");
     } else {
       fetchData();
-      setEntries(journalEntries);
       if (0 < points && points < 5) {
         setLevel(levels[0]);
       } else if (4 < points && points < 10) {
@@ -81,60 +73,11 @@ function ProfilePage() {
     }
   }, []);
 
-  //////////all the journal related functions
-  const openEntryHandler = (entry) => {
-    setSelectedEntry(entry);
-    setAddEntry(false);
-  };
-
-  const addEntryHandler = () => {
-    setSelectedEntry(null);
-    setAddEntry(true);
-  };
-
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <div className="profile">
-      <section className="profile__sidebar">
-        <div className="profile__journal">
-          <h3>Journal</h3>
-          <button className="profile__add-button" onClick={addEntryHandler}>
-            {/* <plusIcon /> */}
-            Add
-          </button>
-          <div>
-            <h4>All entries</h4>
-            <ul>
-              {entries.map((entry) => (
-                <li key={entry.id}>
-                  {/* <p>{entry.date}</p> */}
-                  <button
-                    className="profile__entry-button"
-                    onClick={() => openEntryHandler(entry)}
-                  >
-                    {entry.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section className="profile__journal-output">
-        {!addEntry && !selectedEntry && (
           <ProfileInfo userInfo={userInfo} level={level} />
-        )}
-        {addEntry && <AddEntry />}
-        {selectedEntry && (
-          <div>
-            <h3>{selectedEntry.title}</h3>
-            <p>{selectedEntry.date}</p>
-            <p>{selectedEntry.content}</p>
-            {/* Display other entry details as needed */}
-          </div>
-        )}
-      </section>
     </div>
   );
 }
