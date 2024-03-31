@@ -1,42 +1,52 @@
 @forward "../../styles/partials/globals";
 @use "../../styles/partials/colors" as *;
 
-.challenges{
+.challenges {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 
+  &__container {
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+  }
 
-    &__container {
-        width:80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  &__challenge-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-secondary-light;
+    padding-left: 40px;
+    border-radius: 50px;
+    margin: 20px 0;
+  }
 
-    &__challenge-card{
-        display:flex;
-        justify-content: space-between;
-        background-color:$color-secondary-light;
-        padding-left: 40px;
-        border-radius:50px;
-        margin:20px 0;
-    }
-    &__challenge-name{
-        // margin:0;
-        // padding:10px;
-        width:30%;
-        text-align: left;
-        text-justify:center;;
-    }
-    &__challenge-link{
-        display:block;
-        padding:0 30px;
-        text-decoration:none;
-        font-weight:bold;
-        background-color:$button-start;
-        color:white;
-        border-radius:50px;
-        line-height: 80px;
+  &__card-text {
+    display: flex;
+    // flex:1;
+    width: 70%;
+  }
+  
+  &__challenge-name {
+    // margin:0;
+    // padding:10px;
+    width: 80%;
+    text-align: left;
+    text-justify: center;
+  }
 
-    }
+  &__challenge-length {
+    width: 25%;
+  }
+
+  &__challenge-link {
+    display: block;
+    padding: 0 30px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: $button-start;
+    color: white;
+    border-radius: 50px;
+    line-height: 80px;
+  }
 }

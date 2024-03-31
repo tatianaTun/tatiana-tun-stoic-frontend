@@ -18,6 +18,7 @@ function LoginPage() {
         username: e.target.username.value,
         password: e.target.password.value,
       });
+      console.log(response)
       sessionStorage.setItem("token", response.data.token);
       navigate("/");
     } catch (error) {
