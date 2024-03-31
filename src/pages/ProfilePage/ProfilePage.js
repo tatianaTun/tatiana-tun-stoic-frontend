@@ -10,8 +10,8 @@ function ProfilePage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
+  const [level, setLevel] = useState(null);
 
-  const points = 22;
   const levels = [
     "Level 1 : Novice Navigator",
     "Level 2 : Aspiring Apprentice",
@@ -24,11 +24,9 @@ function ProfilePage() {
     "Level 9 : Sage Seeker",
     "Level 10 : Stoic Sage",
   ];
-  const [level, setLevel] = useState(null);
 
   const fetchData = async () => {
     try {
-      // Here grab the token from sessionStorage and then make an axios request to profileUrl endpoint.
       const token = sessionStorage.token;
       const response = await axios.get(profileUrl, {
         headers: {
@@ -37,10 +35,33 @@ function ProfilePage() {
       });
       setIsLoading(false);
       setUserInfo(response.data);
-      // Remember to include the token in Authorization header
     } catch (error) {
       console.log(error);
       navigate("/login");
+    }
+  };
+
+  const getLevel = () => {
+    if (0 <= userInfo.points && userInfo.points < 5) {
+      setLevel(levels[0]);
+    } else if (4 < userInfo.points && userInfo.points < 10) {
+      setLevel(levels[1]);
+    } else if (9 < userInfo.points && userInfo.points < 15) {
+      setLevel(levels[2]);
+    } else if (14 < userInfo.points && userInfo.points < 20) {
+      setLevel(levels[3]);
+    } else if (19 < userInfo.points && userInfo.points < 25) {
+      setLevel(levels[4]);
+    } else if (24 < userInfo.points && userInfo.points < 30) {
+      setLevel(levels[5]);
+    } else if (29 < userInfo.points && userInfo.points < 35) {
+      setLevel(levels[6]);
+    } else if (34 < userInfo.points && userInfo.points < 40) {
+      setLevel(levels[7]);
+    } else if (39 < userInfo.points && userInfo.points < 45) {
+      setLevel(levels[8]);
+    } else if (44 < userInfo.points) {
+      setLevel(levels[9]);
     }
   };
 
@@ -49,35 +70,20 @@ function ProfilePage() {
       navigate("/signup");
     } else {
       fetchData();
-      if (0 < points && points < 5) {
-        setLevel(levels[0]);
-      } else if (4 < points && points < 10) {
-        setLevel(levels[1]);
-      } else if (9 < points && points < 15) {
-        setLevel(levels[2]);
-      } else if (14 < points && points < 20) {
-        setLevel(levels[3]);
-      } else if (19 < points && points < 25) {
-        setLevel(levels[4]);
-      } else if (24 < points && points < 30) {
-        setLevel(levels[5]);
-      } else if (29 < points && points < 35) {
-        setLevel(levels[6]);
-      } else if (34 < points && points < 40) {
-        setLevel(levels[7]);
-      } else if (39 < points && points < 45) {
-        setLevel(levels[8]);
-      } else if (44 < points) {
-        setLevel(levels[9]);
-      }
     }
   }, []);
+
+  useEffect(() => {
+    if (userInfo && typeof userInfo.points === "number") {
+      getLevel();
+    }
+  }, [userInfo]);
 
   return isLoading ? (
     <p>Loading...</p>
   ) : (
     <div className="profile">
-          <ProfileInfo userInfo={userInfo} level={level} />
+      <ProfileInfo userInfo={userInfo} level={level} />
     </div>
   );
 }

@@ -6,13 +6,6 @@ import { useNavigate } from "react-router-dom";
 function ProfileInfo({userInfo, level}) {
     const navigate = useNavigate();
 
-    //
-
-
-// if(!userInfo) {
-//     return <p>Loading...</p>
-// }
-
   return (
     <>
       {" "}
@@ -27,6 +20,7 @@ function ProfileInfo({userInfo, level}) {
         >
           Log out
         </button></div>
+        <p>Points: {userInfo.points}</p>
         <p className="profile__level">{level}</p>
         <p>Accomplishments: ___</p>
       </div>
