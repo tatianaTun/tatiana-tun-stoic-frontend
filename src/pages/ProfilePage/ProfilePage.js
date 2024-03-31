@@ -25,7 +25,7 @@ function ProfilePage() {
     "Level 10 : Stoic Sage",
   ];
 
-  const fetchData = async () => {
+  const fetchUser = async () => {
     try {
       const token = sessionStorage.token;
       const response = await axios.get(profileUrl, {
@@ -42,25 +42,25 @@ function ProfilePage() {
   };
 
   const getLevel = () => {
-    if (0 <= userInfo.points && userInfo.points < 5) {
+    if (0 <= userInfo.points && userInfo.points < 19) {
       setLevel(levels[0]);
-    } else if (4 < userInfo.points && userInfo.points < 10) {
+    } else if (20 < userInfo.points && userInfo.points < 39) {
       setLevel(levels[1]);
-    } else if (9 < userInfo.points && userInfo.points < 15) {
+    } else if (40 < userInfo.points && userInfo.points < 59) {
       setLevel(levels[2]);
-    } else if (14 < userInfo.points && userInfo.points < 20) {
+    } else if (60 < userInfo.points && userInfo.points < 79) {
       setLevel(levels[3]);
-    } else if (19 < userInfo.points && userInfo.points < 25) {
+    } else if (80 < userInfo.points && userInfo.points < 99) {
       setLevel(levels[4]);
-    } else if (24 < userInfo.points && userInfo.points < 30) {
+    } else if (100 < userInfo.points && userInfo.points < 119) {
       setLevel(levels[5]);
-    } else if (29 < userInfo.points && userInfo.points < 35) {
+    } else if (120 < userInfo.points && userInfo.points < 139) {
       setLevel(levels[6]);
-    } else if (34 < userInfo.points && userInfo.points < 40) {
+    } else if (140 < userInfo.points && userInfo.points < 159) {
       setLevel(levels[7]);
-    } else if (39 < userInfo.points && userInfo.points < 45) {
+    } else if (160 < userInfo.points && userInfo.points < 179) {
       setLevel(levels[8]);
-    } else if (44 < userInfo.points) {
+    } else if (180 < userInfo.points) {
       setLevel(levels[9]);
     }
   };
@@ -69,7 +69,7 @@ function ProfilePage() {
     if (!sessionStorage.token) {
       navigate("/signup");
     } else {
-      fetchData();
+      fetchUser();
     }
   }, []);
 

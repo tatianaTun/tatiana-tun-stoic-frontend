@@ -1,40 +1,105 @@
 import "./ChallengePage.scss";
 import { useState, useEffect } from "react";
 import { baseURL } from "../../consts";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 function ChallengePage() {
+  const navigate = useNavigate();
+
   const { challengeId } = useParams();
   const [challenge, setChallenge] = useState(null);
+  const [user, setUser] = useState(null);
 
   const [buttonText, setButtonText] = useState("START DAY 1");
   const [buttonColor, setButtonColor] = useState(""); // default or your initial button color
   const [showDoneMessage, setShowDoneMessage] = useState(false);
   const [doneMessage, setDoneMessage] = useState(null);
   const [daysCountUpdated, setDaysCountUpdated] = useState(false);
+  const [statusChallenge, setStatusChallenge] = useState(false);
+  const [days, setDays] = useState(null);
+
+  const getUser = async () => {
+    try {
+      const token = sessionStorage.token;
+      const profileUrl = `${baseURL}/profile`;
+      const response = await axios.get(profileUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+      navigate("/login");
+    }
+  };
 
   const getChallenge = async () => {
     try {
       const requestUrl = `${baseURL}/challenges/${challengeId}`;
       const result = await axios.get(requestUrl);
       const fetchedChallenge = result.data;
-      console.log(result.data.days);
-      if (result.data.days !== 0) {
-        setButtonText(`START DAY ${result.data.days + 1}`);
-      }
       setChallenge(fetchedChallenge);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const updateDaysCount = async (daysDone) => {
+  const getChallengeStatus = async () => {
     try {
-      const requestUrl = `${baseURL}/challenges/${challengeId}`;
+      console.log(user.id);
+      const response = await axios.get(
+        `${baseURL}/challenges/${user.id}/${challenge.id}/progress`
+      );
+      const { status, days } = response.data;
+      if (status) {
+        console.log(`Challenge Status: ${status}. Days ${days}`);
+        if (status === "In Progress") {
+          setButtonText(`START DAY ${days + 1}`);
+        }
+        setDays(days);
+        setStatusChallenge(true);
+      } else {
+        console.log("Challenge status not found.");
+      }
+    } catch (error) {
+      console.error("Error fetching challenge status:", error);
+    }
+  };
+
+  const startChallenge = async () => {
+    try {
+      const requestUrl = `${baseURL}/challenges/${user.id}/${challenge.id}/progress`;
+      const response = await axios.post(requestUrl, {
+        user_id: user.id,
+        challenge_id: challenge.id,
+      });
+      console.log("Challenge started successfully", response.data);
+      setDays(0);
+    } catch (error) {
+      console.error("Error starting challenge:", error);
+    }
+  };
+
+  const startChallengeHandler = async () => {
+    setStatusChallenge(true);
+    startChallenge();
+  };
+
+  const updateDaysCount = async (daysDone, statusChallenge) => {
+    let status = "In Progress";
+    if (!statusChallenge && daysDone === 0) {
+      status = "Not Started";
+    }
+    try {
+      const requestUrl = `${baseURL}/challenges/${user.id}/${challenge.id}/progress`;
       const result = await axios.patch(requestUrl, {
         days: daysDone,
+        status: status,
       });
-      console.log(result);
+      console.log("Challenge days count updated successfully");
+      setDays(daysDone);
       setDaysCountUpdated(true);
     } catch (error) {
       console.log(error);
@@ -54,29 +119,31 @@ function ChallengePage() {
           },
         }
       );
-      console.log(response)
+      console.log("user points updated successfully");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   const daysCountHandler = () => {
     let daysDone = 0;
-    if (challenge.days === challenge.length - 1) {
+    console.log(days);
+    if (buttonText === `RESTART THE CHALLENGE`) {
+      setButtonText("START DAY 1");
+      setDoneMessage(null);
+      setDaysCountUpdated(true);
+    } else if (days === challenge.length - 1) {
       setButtonText(`RESTART THE CHALLENGE`);
       setDoneMessage(
         `Congratulations! You have done the challenge! You earn ${challenge.points} points for it.`
       );
-      updateDaysCount(daysDone);
-      //connect to the user profile to add points to their account
+      // setStatusChallenge(false)
+      updateDaysCount(daysDone, false);
       updateUserPoints();
-    } else if (buttonText === `RESTART THE CHALLENGE`) {
-      setButtonText("START DAY 1");
-      setDaysCountUpdated(true);
     } else {
-      daysDone = challenge.days + 1;
-      setDoneMessage(`Day ${challenge.days + 1} done`);
-      setButtonText(`START DAY ${challenge.days + 2}`);
+      daysDone = days + 1;
+      setDoneMessage(`Day ${daysDone} done`);
+      setButtonText(`START DAY ${daysDone + 1}`);
       // setButtonColor("gray");
       setShowDoneMessage(true);
       updateDaysCount(daysDone);
@@ -84,12 +151,16 @@ function ChallengePage() {
   };
 
   useEffect(() => {
+    getUser();
     getChallenge();
+  }, []);
+
+  useEffect(() => {
+    if (user && challenge) {
+      getChallengeStatus();
+    }
     setDaysCountUpdated(false);
-    // if (challenge.days !== 0) {
-    //   setButtonText(`START DAY ${challenge.days + 1}`);
-    // }
-  }, [daysCountUpdated]);
+  }, [daysCountUpdated, user, challenge, statusChallenge]);
 
   if (!challenge) {
     return <p>Loading...</p>;
@@ -110,16 +181,27 @@ function ChallengePage() {
           completing them belongs to you. What a great opportunity to exercise
           will power!
         </p>
+        {!statusChallenge && (
+          <button
+            className="challenge__start-button"
+            onClick={startChallengeHandler}
+            style={{ backgroundColor: buttonColor }}
+          >
+            START CHALLENGE
+          </button>
+        )}
         {showDoneMessage && (
           <p className="challenge__completion-message">{doneMessage}</p>
         )}
-        <button
-          className="challenge__count-button"
-          onClick={daysCountHandler}
-          style={{ backgroundColor: buttonColor }}
-        >
-          {buttonText}
-        </button>
+        {statusChallenge && (
+          <button
+            className="challenge__count-button"
+            onClick={daysCountHandler}
+            style={{ backgroundColor: buttonColor }}
+          >
+            {buttonText}
+          </button>
+        )}
       </section>
     </div>
   );
