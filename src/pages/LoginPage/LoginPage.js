@@ -1,3 +1,4 @@
+import "./LoginPage.scss";
 import axios from "axios";
 import { baseURL } from "../../consts";
 import { useState } from "react";
@@ -29,21 +30,21 @@ function LoginPage() {
 
   return (
     <>
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
-          <Input type="text" name="username" />
-          <Input type="password" name="password" />
+      <div className="login-page">
+      <form className="login" onSubmit={handleLogin}>
+        <h1 className="login__title">Log in</h1>
 
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
+        <Input type="text" name="username" label="Username" />
+        <Input type="password" name="password" label="Password" />
 
-          {error && <div className="login__message">{error}</div>}
-        </form>
-        <p>
-          Need an account? <Link to="/signup">Sign up</Link>
-        </p>
+        <button className="login__button">Log in</button>
+
+        {error && <div className="login__message">{error}</div>}
+      </form>
+
+      <p>
+        Need an account? <Link to="/signup">Sign up</Link>
+      </p>
       </div>
     </>
   );

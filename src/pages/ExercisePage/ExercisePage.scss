@@ -31,6 +31,10 @@
     background-color: $color-primary-light;
     font-weight:bold;
     margin:30px 0;
+
+    &:hover {
+      border-bottom:2px solid $color-secondary-dark;
+    }
   }
 
   &__feedback{

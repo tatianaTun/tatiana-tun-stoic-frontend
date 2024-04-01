@@ -88,7 +88,7 @@ function ChallengePage() {
   const updateDaysCount = async (daysDone, statusChallenge) => {
     let status = "In Progress";
     if (!statusChallenge && daysDone === 0) {
-      status = "Not Started";
+      status = "Start";
     }
     try {
       const requestUrl = `${baseURL}/challenges/${user.id}/${challenge.id}/progress`;

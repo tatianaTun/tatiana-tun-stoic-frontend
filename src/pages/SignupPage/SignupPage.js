@@ -1,3 +1,4 @@
+import "./SignupPage.scss";
 import axios from "axios";
 import { baseURL } from "../../consts";
 import { useState } from "react";
@@ -33,14 +34,14 @@ function SignupPage() {
   return (
     <>
       {" "}
-      <div>
-        <form onSubmit={handleSignup}>
-          <h1>Sign Up</h1>
+      <div className="signup-page">
+        <form onSubmit={handleSignup} className="signup">
+          <h1 className="signup__title">Sign Up</h1>
           <Input type="text" name="username" label="Username" />
           <Input type="text" name="name" label="Name" />
           <Input type="password" name="password" label="Password" />
           
-          <button type="submit" className="btn btn-primary">Signup</button>
+          <button type="submit" className="signup__button">Signup</button>
 
           {success && <div className="signup__message">Signed up!</div>}
           {error && <div className="signup__message">{error}</div>}
