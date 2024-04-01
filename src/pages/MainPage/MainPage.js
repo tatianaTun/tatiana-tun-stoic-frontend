@@ -21,7 +21,7 @@ function MainPage() {
   //Get advice from ChatGPT
   const getAdvice = async (e) => {
     e.preventDefault();
-    console.log(question);
+
     try {
       const openai = new OpenAI({
         apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -38,7 +38,6 @@ function MainPage() {
         model: "gpt-3.5-turbo",
       });
 
-      console.log(chatCompletion.choices[0].message.content);
       const returnedAdvice = JSON.parse(
         chatCompletion.choices[0].message.content
       ); //need to parse the response from json into a js
@@ -66,6 +65,7 @@ function MainPage() {
       <section className="main__advice">
         <form onSubmit={getAdvice}>
           <h2 className="main__advice-header">NEED ADVICE?</h2>
+          <p>Ask the Stoic advisor for help with anything you want to improve mentality toward.</p>
           <div>
             <input
               type="text"

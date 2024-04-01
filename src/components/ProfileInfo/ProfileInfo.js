@@ -20,9 +20,8 @@ function ProfileInfo({userInfo, level}) {
         >
           Log out
         </button></div>
+        <h4 className="profile__level">{level}</h4>
         <p>Points: {userInfo.points}</p>
-        <p className="profile__level">{level}</p>
-        <p>Accomplishments: ___</p>
       </div>
     </>
   );

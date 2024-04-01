@@ -93,7 +93,7 @@ function ChallengesPage() {
             </div>
             <Link
               to={`/challenges/${challenge.id}`}
-              className="challenges__challenge-link"
+              className={`challenges__challenge-link ${challengeStatuses[challenge.id]?.status === "In Progress" ? "--active" : ""}`}
             >
               {challengeStatuses[challenge.id]?.status || "START"}
             </Link>

@@ -7,6 +7,10 @@
     margin-right: auto;
     text-align: center;
 
+    &__buttons-container {
+padding-top:30px;
+    }
+
     &__count-button,
     &__start-button {
         border: none;

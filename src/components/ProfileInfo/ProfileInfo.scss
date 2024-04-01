@@ -1,17 +1,24 @@
 @use "../../styles/partials/colors" as *;
 
 .profile {
-    &__header-container {
-        display:flex;
-        justify-content:space-between;
-    }
+  &__user-info {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__header-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__logout-button {
     border: none;
     background-color: $color-secondary-light;
-    margin:28px 0;
+    margin: 28px 0;
+    text-decoration:underline;
   }
 
-  &__level{
-    
+  &__level {
   }
 }

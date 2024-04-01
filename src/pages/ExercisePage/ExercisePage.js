@@ -47,13 +47,12 @@ function ExercisePage() {
       messages: [
         {
           role: "user",
-          content: `The exercise is ${exercise}.Please give back an interactive scenario where a person can apply the exercise without specifying how the exercise should be apllied. Add a short question about how the exercise the person just practiced can be applied in this scenario without hinting on it's positive effects. Please write as you are communication with a person. Specify the scenario is to practice this exercise.`,
+          content: `The exercise is ${exercise.description}.Please give back an interactive scenario where a person can apply the exercise without specifying how the exercise should be apllied. Add a short question about how the exercise the person just practiced can be applied in this scenario without hinting on it's positive effects. Please write as you are communication with a person. Specify the scenario is to practice this exercise.`,
         },
       ],
       model: "gpt-3.5-turbo",
     });
 
-    console.log(chatCompletion.choices[0].message.content);
     const returnedScenario = chatCompletion.choices[0].message.content; //need to parse the response from json into a js
     setScenario(returnedScenario);
   };
@@ -70,13 +69,12 @@ function ExercisePage() {
       messages: [
         {
           role: "user",
-          content: `The scenario is ${scenario}. The user's answer is ${scenarioAnswer}. Please analize the answer and return feedback as you are communicating in person. Keep in mind that this is all related to Stoicism philosophy. Reply without questions as the user will not be able to reply you.`,
+          content: `The exercise is ${exercise.description}. The scenario is ${scenario}. The user's answer is ${scenarioAnswer}. Please analize the answer and return feedback as you are communicating in person. Keep in mind that this is all related to Stoicism philosophy. Add additional advice on how the exercise could be applied in the scenario when useful. Reply without questions as the user will not be able to reply you.Also answer how would you personally apply the exercise. `,
         },
       ],
       model: "gpt-3.5-turbo",
     });
 
-    console.log(chatCompletion.choices[0].message.content);
     const returnedScenarioFeedback = chatCompletion.choices[0].message.content; //need to parse the response from json into a js
     setScenarioFeedback(returnedScenarioFeedback);
   };

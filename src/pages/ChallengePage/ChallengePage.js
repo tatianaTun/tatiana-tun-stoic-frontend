@@ -12,7 +12,6 @@ function ChallengePage() {
   const [user, setUser] = useState(null);
 
   const [buttonText, setButtonText] = useState("START DAY 1");
-  const [buttonColor, setButtonColor] = useState(""); // default or your initial button color
   const [showDoneMessage, setShowDoneMessage] = useState(false);
   const [doneMessage, setDoneMessage] = useState(null);
   const [daysCountUpdated, setDaysCountUpdated] = useState(false);
@@ -48,13 +47,12 @@ function ChallengePage() {
 
   const getChallengeStatus = async () => {
     try {
-      console.log(user.id);
       const response = await axios.get(
         `${baseURL}/challenges/${user.id}/${challenge.id}/progress`
       );
       const { status, days } = response.data;
       if (status) {
-        console.log(`Challenge Status: ${status}. Days ${days}`);
+        // console.log(`Challenge Status: ${status}. Days ${days}`);
         if (status === "In Progress") {
           setButtonText(`START DAY ${days + 1}`);
         }
@@ -75,7 +73,7 @@ function ChallengePage() {
         user_id: user.id,
         challenge_id: challenge.id,
       });
-      console.log("Challenge started successfully", response.data);
+      // console.log("Challenge started successfully", response.data);
       setDays(0);
     } catch (error) {
       console.error("Error starting challenge:", error);
@@ -98,7 +96,7 @@ function ChallengePage() {
         days: daysDone,
         status: status,
       });
-      console.log("Challenge days count updated successfully");
+      // console.log("Challenge days count updated successfully");
       setDays(daysDone);
       setDaysCountUpdated(true);
     } catch (error) {
@@ -119,7 +117,7 @@ function ChallengePage() {
           },
         }
       );
-      console.log("user points updated successfully");
+      // console.log("user points updated successfully");
     } catch (error) {
       console.log(error);
     }
@@ -127,7 +125,6 @@ function ChallengePage() {
 
   const daysCountHandler = () => {
     let daysDone = 0;
-    console.log(days);
     if (buttonText === `RESTART THE CHALLENGE`) {
       setButtonText("START DAY 1");
       setDoneMessage(null);
@@ -181,11 +178,11 @@ function ChallengePage() {
           completing them belongs to you. What a great opportunity to exercise
           will power!
         </p>
+        <div className="challenge__buttons-container">
         {!statusChallenge && (
           <button
             className="challenge__start-button"
             onClick={startChallengeHandler}
-            style={{ backgroundColor: buttonColor }}
           >
             START CHALLENGE
           </button>
@@ -197,11 +194,11 @@ function ChallengePage() {
           <button
             className="challenge__count-button"
             onClick={daysCountHandler}
-            style={{ backgroundColor: buttonColor }}
           >
             {buttonText}
           </button>
         )}
+        </div>
       </section>
     </div>
   );

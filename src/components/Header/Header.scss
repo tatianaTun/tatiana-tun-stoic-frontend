@@ -1,20 +1,46 @@
 @use "../../styles/partials/colors" as *;
 
 .header {
+
   color: white;
   font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 50px;
+
+  padding: 20px 0;
   background-color: $color-primary-medium;
-  font-size: 1.5rem;
+
+
+  &__container {
+    width:80%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+  }
 
   &__links {
   }
+
   &__link {
-    padding: 0 10px;
+    font-size: 1.3rem;
+    padding: 10px 10px;
+    border-radius:20px;
     text-decoration: none;
     color: $color-primary-dark;
     font-weight: 600;
+
+    &:hover {
+      color: $color-hover-link;
+      background-color: $color-secondary-medium;
+    }
+
+    &.active {
+      color: $color-hover-link;
+      background-color: $color-secondary-medium;
+    }
   }
 }
