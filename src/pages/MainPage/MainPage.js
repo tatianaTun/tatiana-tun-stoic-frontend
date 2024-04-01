@@ -65,7 +65,7 @@ function MainPage() {
       <section className="main__advice">
         <form onSubmit={getAdvice}>
           <h2 className="main__advice-header">NEED ADVICE?</h2>
-          <p>Ask the Stoic advisor for help with anything you want to improve mentality toward.</p>
+          <p className="main__advice-description">Ask the Stoic advisor for help with anything you want to improve mentality toward.</p>
           <div>
             <input
               type="text"

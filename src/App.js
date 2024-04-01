@@ -7,6 +7,7 @@ import ChallengePage from "./pages/ChallengePage/ChallengePage";
 import ChallengesPage from "./pages/ChallengesPage/ChallengesPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/challenges" element={<ChallengesPage />} />
         <Route path="/challenges/:challengeId" element={<ChallengePage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

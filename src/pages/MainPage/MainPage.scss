@@ -11,10 +11,8 @@
     margin: 3rem 0;
   }
   &__advice {
-    // border: 2px solid rgb(193, 193, 193);
     background-color:$color-primary-light;
     border-radius: 20px;
-    // height: 400px;
     padding: 40px;
 
     & form {
@@ -30,6 +28,11 @@
         font-weight:bold;
       }
     }
+  }
+
+
+  &__advice-description {
+    margin:2rem;
   }
 
   &__answer{

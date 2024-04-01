@@ -79,7 +79,8 @@ function ChallengesPage() {
     <section className="challenges">
       <div>
         <h1>Challenges</h1>
-        <p>Short text about the benefits of challenging</p>
+        <p>Engaging in Stoic challenges can offer a range of benefits, aligning closely with the principles of Stoicism, which emphasize self-control, resilience, and the importance of focusing on what we can control while accepting what we cannot.</p>
+        <p>Here you can find the list of challenges you can pick from to enhance your mentality further.</p>
       </div>
       <div className="challenges__container">
         <h2>Challenges List</h2>
